@@ -1,19 +1,21 @@
 package com.seminfo.domain.model;
 
+import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class EventoModel {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idEvento;
 	@Column(nullable = false, length = 255)
 	private String titulo;
@@ -23,6 +25,24 @@ public class EventoModel {
 	private Date dataEvento;
 	@Column(nullable = false)
 	private int vagas;
+
+	@ManyToMany(mappedBy = "eventos")
+	private List<InscritoModel> inscritos = new ArrayList<InscritoModel>();
+
+	public EventoModel() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public EventoModel(Long idEvento, String titulo, String descricao, Date dataEvento, int vagas,
+			List<InscritoModel> inscritos) {
+		super();
+		this.idEvento = idEvento;
+		this.titulo = titulo;
+		this.descricao = descricao;
+		this.dataEvento = dataEvento;
+		this.vagas = vagas;
+		this.inscritos = inscritos;
+	}
 
 	public Long getIdEvento() {
 		return idEvento;
@@ -62,6 +82,14 @@ public class EventoModel {
 
 	public void setVagas(int vagas) {
 		this.vagas = vagas;
+	}
+
+	public List<InscritoModel> getInscritos() {
+		return inscritos;
+	}
+
+	public void setInscritos(List<InscritoModel> inscritos) {
+		this.inscritos = inscritos;
 	}
 
 }
