@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.seminfo.api.model.EventoInput;
 import com.seminfo.api.model.EventoOutput;
+import com.seminfo.api.model.InscricaoInput;
+import com.seminfo.api.model.InscritoOutput;
 import com.seminfo.domain.model.EventoModel;
 import com.seminfo.domain.service.EventoService;
 
@@ -57,5 +59,13 @@ public class EventoController {
 		return new ResponseEntity<EventoOutput>(eventoOutput,HttpStatus.CREATED);
 	}
 	
+	@PostMapping(path = "/inscrever-em-evento")
+	public ResponseEntity<EventoOutput> inscricao(@RequestBody InscricaoInput inscricaoInput) {
+		EventoModel evento = service.incricao(inscricaoInput.getIdEvento(), inscricaoInput.getIdInscrito());
+		if(evento != null) {
+			return new ResponseEntity<EventoOutput>(mapper.map(evento, EventoOutput.class),HttpStatus.OK);
+		}
+		return null;
+	}
 	
 }

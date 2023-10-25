@@ -8,5 +8,6 @@ public interface EventoService {
 
 	List<EventoModel> listarEventos();
 	EventoModel novoEvento(EventoModel eventoModel);
+	EventoModel incricao(Long idEvento, Long idInscrito);
 	
 }

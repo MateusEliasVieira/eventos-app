@@ -2,14 +2,13 @@ package com.seminfo.api.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.seminfo.domain.model.EventoModel;
 
 public class InscritoOutput {
 
 	private Long idInscrito;
 	private String nome;
 	private String email;
-	private List<EventoModel> eventos = new ArrayList<EventoModel>();
+	List<EventoOutput> eventos = new ArrayList<EventoOutput>();
 
 	public Long getIdInscrito() {
 		return idInscrito;
@@ -35,11 +34,11 @@ public class InscritoOutput {
 		this.email = email;
 	}
 
-	public List<EventoModel> getEventos() {
+	public List<EventoOutput> getEventos() {
 		return eventos;
 	}
 
-	public void setEventos(List<EventoModel> eventos) {
+	public void setEventos(List<EventoOutput> eventos) {
 		this.eventos = eventos;
 	}
 

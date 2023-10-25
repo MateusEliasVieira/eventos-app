@@ -14,11 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.seminfo.api.model.EventoInput;
-import com.seminfo.api.model.EventoOutput;
+import com.seminfo.api.model.InscricaoInput;
 import com.seminfo.api.model.InscritoInput;
 import com.seminfo.api.model.InscritoOutput;
-import com.seminfo.domain.model.EventoModel;
 import com.seminfo.domain.model.InscritoModel;
 import com.seminfo.domain.service.InscritoService;
 
@@ -48,5 +46,6 @@ public class InscritoController {
 		InscritoOutput inscritoOutput = mapper.map(inscrito, InscritoOutput.class);
 		return new ResponseEntity<InscritoOutput>(inscritoOutput, HttpStatus.CREATED);
 	}
+	
 
 }
